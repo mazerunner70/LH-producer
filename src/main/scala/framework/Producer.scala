@@ -22,8 +22,9 @@ class Producer[K: TypeTag, V: TypeTag] {
   var kafkaProducer: Option[KafkaProducer[K, V]] = None
 
   def initialise() = {
+    val hostport = sys.env("HOST_NAME")+":"+sys.env("PORT_NUM")
     val consumerProps = Map(
-      "bootstrap.servers"  -> "kafka0:29092",
+      "bootstrap.servers"  -> hostport,
       "key.serializer"   -> ser.getOrElse(typeOf[K].toString, ""),
       "value.serializer" -> ser.getOrElse(typeOf[V].toString, ""),
     )
