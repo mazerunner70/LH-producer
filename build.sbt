@@ -1,4 +1,4 @@
-name := "LH-producer"
+name := "lh-producer"
 
 version := "0.1"
 
@@ -17,5 +17,7 @@ enablePlugins(JavaAppPackaging)
 enablePlugins(DockerPlugin)
 
 //https://medium.com/jeroen-rosenberg/lightweight-docker-containers-for-scala-apps-11b99cf1a666
-mainClass in Compile := Some("core.Main")
+mainClass in Compile  := Some("core.Main")
 dockerBaseImage       := "openjdk:jre"
+packageName in Docker := "lh-producer"
+dockerUsername        := Some("lh-helm")
